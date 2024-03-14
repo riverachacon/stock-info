@@ -1,0 +1,75 @@
+<%- include("partials/header.ejs") %>
+
+        <% if(locals.dataR){ %>
+            
+            <div class="catDiv">
+                    
+                <h2>Picture of the day 🐱</h2>
+                <img class="catPic" src="<%= dataR[0].url %>" alt="cute cat">
+
+            </div>
+
+        <% } %>
+
+        <form action="/submit" id="myForm" method="POST">
+            <label for="tickerInput">Ticker:</label>
+            <input type="text" id="tickerInput" name="ticker">
+    
+            <label for="date">Date:</label>
+            <input type="date" id="dateInput" name="date" pattern="\d{4}-\d{2}-\d{2}">
+    
+    
+            <input type="submit">
+        </form>
+
+        <% if(locals.data && locals.data2){ %>
+            <div class="title">
+                <h1>$<%= data.symbol %></h1>
+                <a class="chart" href="https://www.tradingview.com/chart/?symbol=%3A<%= data.symbol %>">Live chart</a>
+                
+                <div class="tickerInfo">
+                
+                
+                    <p class="titleDate">Info for: <%= date %></p>
+                    <ul>
+                        <li>Open market price: <%= data.open %></li>
+                        <li>High of the day: <%= data.high %></li>
+                        <li>Low of the day: <%= data.low %></li>
+                        <li>Closing price: <%= data.close %></li>
+                        <li>Volume: <%= data.volume %></li>
+                        <li>Intraday move: <%= (((data.high-data.low)/data.high)*100).toFixed(2) %>%</li>
+                    </ul>
+                </div>
+            </div>
+            
+
+
+
+            <h2 class="topN">Top News</h2>
+            <div class="tickerNews">                
+                <% for(var i = 0; i < 3; i ++){ %>
+                    <div class="news">
+                        <h3><%= data2.results[i].title %></h3>
+                        <div class="img">
+                            <a class="newsImg1" href="<%= data2.results[i].article_url %>">
+                                <img class="newsImg" src="<%= data2.results[i].image_url %>" alt="">
+                            </a>
+                        </div>                        
+                        <p><%= data2.results[i].description %></p>
+                        <a href="<%= data2.results[i].article_url %>">More</a>
+                    </div>
+                <% } %>
+            </div>
+
+        <% }else{ %>
+            <h4>Please search your favorite stock</h4>
+        <% } %>
+
+    <% if (locals.error) {%>
+        <div id="tag-error" class="tag-error">
+          <%=error%>
+        </div>
+    <%}%>
+
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,243 @@
+body{
+    background: #2C3333; 
+    color: #F2F1EB;
+}
+
+.catDiv{
+    padding: 19px;
+}
+.catPic, .newsImg{
+    width: 350px;
+}
+#myForm{
+    padding: 19px;
+}
+
+a{
+    text-decoration: none;
+    color: #15F5BA;
+}
+a:hover{
+    color: #CDFADB;
+}
+
+.title{
+    text-align: center;
+}
+h1{
+    color: #38E54D;
+    text-align: center;
+}
+ul{
+    list-style: none;
+}
+
+
+.tickerInfo{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #83C0C1;
+    width: 450px;
+
+}
+
+@keyframes colorChange {
+    0% { color: #15F5BA; } 
+    50% { color: #007F73; } 
+    100% { color: #CDFADB; } 
+}
+
+.chart{
+    animation: colorChange 3.5s infinite;
+    position: relative;
+}
+.chart::before {
+    background: hsl(210, 13%, 85%);
+    content: "";
+    inset: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+  }
+
+.chart:hover::before 
+{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+.news{
+    /* padding: 15px; */
+    border: 2px solid #CCD6A6;
+    /* display: flex;
+    flex-direction: column; */
+    /* gap: 1.1rem; */
+    /* float: left; */
+    width: 450px;
+    padding: 1.2rem;
+
+
+}
+.titleDate, li{
+    color: #FFF3CF;
+
+}
+.topN{
+    font-size: 1.4rem;
+    text-align: center;
+    color: #F3F8FF;
+}
+
+.img{
+    display: flex;
+    justify-content: center;
+}
+/* .tickerInfo{
+    display: flex;
+    align-items: center;
+} */
+
+.tickerNews{
+    display: flex;
+    /* padding: 1rem; */
+
+}
+
+
+/*header*/
+
+header{
+    position: relative;
+    padding: 0 2rem;
+}
+
+.nav-bar{
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-bar .logo a{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-bar .links{
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-bar .toggle-btn{
+    color: #38E54D;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* DROPDOWN */
+.dropdown{
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.999);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown.open{
+    height: 140px;
+}
+
+.dropdown li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*responsive*/
+@media (max-width: 1300px){
+    .nav-bar .links,
+    .links li:nth-child(3) a{
+        display: none;
+    }
+    .nav-bar .toggle-btn{
+        display: block;
+    }
+    .dropdown{
+        display: block;
+    }
+    .tickerNews, .title{
+        display: flex;
+        flex-direction: column;
+    }
+    a{
+        color: #4CCD99;
+    }
+    body{
+        font-size: 24px;
+    }
+    .news, .title{
+        width: 900px;
+    }
+    #myForm {
+        padding: 20px; 
+    }
+
+    #myForm label {
+        font-size: 18px; 
+        margin-bottom: 10px; 
+    }
+
+    #myForm input[type="text"],
+    #myForm input[type="date"],
+    #myForm input[type="submit"] {
+        width: 100%; 
+        padding: 10px; 
+        margin-bottom: 10px;
+    }
+    footer{
+        padding: ;
+    }
+
+}
+
+@media (max-width: 576px){
+    .dropdown{
+        left: 2rem;
+        width: unset;
+    }
+    a{
+        color: #4CCD99;
+    }
+    body{
+        font-size: 16px;
+    }
+    .news, .title{
+        width: 400px;
+    }
+
+
+
+}
